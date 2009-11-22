@@ -4,8 +4,6 @@ require 'sinatra'
 require "dm-core"
 require "dm-timestamps"
 require 'dm-validations'
-#require 'dm-pagination'
-#require 'dm-pagination/paginatable'
 require "yaml"
 require "pp"
 
@@ -19,7 +17,6 @@ DataMapper.setup(:default, {
   :password => db["password"],
   :host     => db["host"]
 })
-#DataMapper::Model.append_extensions DmPagination::Paginatable
 
 if @env == 'development'
   DataObjects::Mysql.logger = DataObjects::Logger.new('./tmp/dm.log', 0)
@@ -52,4 +49,3 @@ end
 
 set :views, File.dirname(__FILE__) + '/../app/view'
 #enable :sessions
-#Rack::Handler.register 'Webrick', 'Rack::Handler::Weblick'
