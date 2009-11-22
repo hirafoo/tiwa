@@ -38,7 +38,7 @@ helpers do
   alias_method :h, :escape_html
 
   def post2twitter(entry, answer)
-    "#{entry.item_a} と #{entry.item_b} の違い… #{answer.content} - http://tiwa.hirafoo.net/entry/#{entry.id}"
+    "#{entry.item_a} と #{entry.item_b} の違い…#{answer.content.gsub(/<br \/>/, ' ')} - http://tiwa.hirafoo.net/entry/#{entry.id}"
   end
 
   def fix_request(org_url, http_host, forwarded_host)
