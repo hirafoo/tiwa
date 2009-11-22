@@ -9,6 +9,7 @@ class Entry < Tiwa::Model::Base
   property :item_a,        String,  :nullable => false, :default => '', :length => 0..255
   property :item_b,        String,  :nullable => false, :default => '', :length => 0..255
   property :answers_count, Integer, :nullable => false, :default => 0
+  property :deleted,       Boolean, :nullable => false, :default => 0
   timestamps :at
 
   def self.valid_create(params)

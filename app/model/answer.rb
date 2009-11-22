@@ -9,6 +9,7 @@ class Answer < Tiwa::Model::Base
   property :name,     String,  :nullable => false, :default => '', :length => 0..255
   property :rate,     Integer, :nullable => false, :default => 0
   property :content,  String,  :nullable => false, :default => '', :length => 0..255
+  property :deleted,  Boolean, :nullable => false, :default => 0
   timestamps :at
 
   def self.fix_create(params)
