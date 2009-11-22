@@ -1,0 +1,32 @@
+<%= @post_error %>
+
+<%= partial :post_entry_form %>
+
+<br />
+<% if @type == 'entry' %>
+    <% for e in @entries %>
+        <div class="content-box autopagerize_page_element">
+            <hr>
+            <b><%=h e.item_a %></b> と <b><%=h e.item_b %></b>の違いが分かりません<br />
+            <div style="font-size: 15px">by <%=h e.name %></div><br /><br />
+            <a href="/entry/<%= e.id %>">違いを教える</a> 回答数:<%= e.answers_count %>
+        </div>
+    <% end %>
+<% elsif @type == 'answer' %>
+    <% for a in @answers %>
+        <div class="content-box autopagerize_page_element">
+            <hr>
+            <b><%=h a.entry.item_a %></b> と <b><%=h a.entry.item_b %></b>の違いが分かりません<br /><br />
+            <%= a.content %><br />
+            <form method="post" action="/answer/rate/<%= a.id %>">
+                <input class="button" type="submit" value="評価する" /><br />
+                <a href="http://twitter.com/home?status=<%=post2twitter a.entry, a %>" target="_blank" rel="nofollow">これをTwitterでつぶやく</a>
+            </form>
+            <br />
+            評価：<%= a.rate %><br />
+            <a href="/entry/<%= a.entry.id %>">違いを教える</a> 回答数:<%= a.entry.answers_count %>
+        </div>
+    <% end %>
+<% end %>
+
+<%= partial :pager %>

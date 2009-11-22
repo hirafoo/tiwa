@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+require "rubygems"
+require "script/tiwa"
+
+mode = ARGV[0]
+
+if mode == "-m"
+  DataMapper.auto_migrate!
+elsif mode == "-d"
+  13.times { |i|
+    Entry.create(:name => "名無しさん", :item_a => "あいてむa_#{i}", :item_b => "あいてむb_#{i}")
+  }
+  190.times { |i|
+    n = rand(13) + 1
+    r = rand(40)
+    Answer.create(:entry_id => n, :name => "名無しさん", :rate => r, :content => "かいとう_#{n}")
+    Entry.get(n).increment("answers_count")
+  }
+else
+  warn "usage:\n -m : migration\n -d : create dummy data"
+end

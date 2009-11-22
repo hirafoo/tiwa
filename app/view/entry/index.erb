@@ -1,0 +1,35 @@
+<div class="content-box" style="text-align: center">
+  <p>
+    <b><%=h @entry.item_a %></b> と <b><%=h @entry.item_b %></b> の違いは…
+  </p>
+
+  <form method="post" action="/answer/create/<%= @entry.id %>">
+  <p>
+    名前：<input type="text" name="name" value="名無しさん" />
+  </p>
+  <textarea name="content" rows="2" cols="60">
+ のが<%= @entry.item_a %>
+ のが<%= @entry.item_b %></textarea><br />
+  <input class="button" type="submit" value="違いを教える" />
+  </form>
+</div>
+
+<%= @error %>
+
+<div class="answer_title">これまでの回答</div>
+<% for answer in @answers %>
+<div class="answer_box autopagerize_page_element">
+  <hr>
+  <p>
+    <%= answer.content %><br />
+    by <%=h answer.name %>
+  </p>
+  評価:<%= answer.rate %>
+  <form method="post" action="/answer/rate/<%= answer.id %>">
+    <input class="button" type="submit" value="評価する" /><br />
+    <a href="http://twitter.com/home?status=<%=post2twitter answer.entry, answer %>" target="_blank" rel="nofollow">これをTwitterでつぶやく</a>
+  </form>
+</div>
+<% end %>
+
+<%= partial :pager %>

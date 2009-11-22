@@ -1,0 +1,14 @@
+<div class="pagination">
+  <hr>
+  <% if @prev %>
+    <a href="?page=<%= @prev %>">前の10件</a>
+  <% else %>
+    前の10件
+  <% end %>
+  ｜
+  <% if @next %>
+    <a href="?page=<%= @next %>" rel="next">次の10件</a>
+  <% else %>
+    次の10件
+  <% end %>
+</div>

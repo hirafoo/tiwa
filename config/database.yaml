@@ -1,0 +1,12 @@
+development:
+  adaptor: mysql
+  username: root
+  password: ~
+  host: 127.0.0.1
+  database: tiwa_development
+production:
+  adaptor: mysql
+  username: root
+  password: ~
+  host: 127.0.0.1
+  database: tiwa
