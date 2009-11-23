@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/answer' do
-  @entries, @prev, @next = Entry.paginate({:page => params[:page], :deleted => 0, :order => [:updated_at.desc]})
+  @entries, @prev, @next = Entry.paginate({:page => params[:page], :deleted => 0, :order => [:answers_count.desc]})
   @type = 'entry'
   erb :index
 end
