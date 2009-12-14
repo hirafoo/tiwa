@@ -5,11 +5,11 @@ class Answer < Tiwa::Model::Base
   belongs_to :entry
 
   property :id,       Serial
-  property :entry_id, Integer, :nullable => false, :default => 0
-  property :name,     String,  :nullable => false, :default => '', :length => 0..255
-  property :rate,     Integer, :nullable => false, :default => 0
-  property :content,  String,  :nullable => false, :default => '', :length => 0..255
-  property :deleted,  Boolean, :nullable => false, :default => 0
+  property :entry_id, Integer, :required => true, :default => 0
+  property :name,     String,  :required => true, :default => '', :length => 0..255
+  property :rate,     Integer, :required => true, :default => 0
+  property :content,  String,  :required => true, :default => '', :length => 0..255
+  property :deleted,  Boolean, :required => true, :default => 0
   timestamps :at
 
   def self.fix_create(params)
